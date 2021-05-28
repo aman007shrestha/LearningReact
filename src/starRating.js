@@ -21,14 +21,14 @@ export default function StarRating() {
 
 const createArray = length => [...Array(length)];
 
-export default function StarRating({ totalStars = 5 }) {
+export default function StarRating({ style = {}, totalStars = 5, ...props }) {
 	const [selectedStars, setSelectedStars] = useState(0);
 	console.log(selectedStars)
 	console.log(typeof selectedStars)
 	console.log(typeof setSelectedStars)
 
 	return (
-		<>
+		<div style={{ padding: 5, ...style }} {...props}>
 			{
 				createArray(totalStars).map(
 					(n, i) => (
@@ -45,7 +45,7 @@ export default function StarRating({ totalStars = 5 }) {
 				{selectedStars} of {totalStars} Stars
 			</p>
 			<button onClick={()=> setSelectedStars(0)}>Restart</button>
-		</>
+		</div>
 
 	);
 }
